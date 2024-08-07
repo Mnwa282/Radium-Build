@@ -5,7 +5,7 @@
   name: ксено
   id: KsenosXenoBase
   parent: MobXeno
-  description: Угроза любой органической форме жизни
+  description: Внеземная форма жизни, имеющая крайне высокую степень адаптируемости. Способная выжить в открытом космосе, имеет слабость к огню и высоким температурам. Происхождение неизвестно.
   suffix: KsenosXeno
   components:
   - type: LagCompensation
@@ -33,7 +33,7 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      50: Critical
+      175: Critical
       300: Dead
   - type: Internals
   - type: Damageable
@@ -67,11 +67,6 @@
   - type: Appearance
   - type: Bloodstream
     bloodMaxVolume: 0
-  - type: UnpoweredFlashlight
-  - type: PointLight
-    enabled: false
-    radius: 4
-    color: "purple"
   - type: Puller
     needsHands: false
   - type: NoSlip
@@ -152,7 +147,7 @@
 - type: entity
   name: Грудолом
   id: KsenosXenoLarva
-  description: Молодой ксеноморф.
+  description: Недавно рождённый ксеноморф, способный эволюционировать во взрослую форму.
   parent: KsenosXenoBase
   components:
   - type: Sprite
@@ -164,17 +159,17 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      10: Dead
+      30: Dead
   - type: GhostTakeoverAvailable
   - type: GhostRole
     name: Грудолом
-    description: Молодой ксеноморф
-    rules: "Эволюционируй в полноценного ксеноморфа."
+    description: Недавно рождённый ксеноморф, способный эволюционировать во взрослую форму. Быстрый и хилый.
+    rules: "Эволюционируй в полноценного ксеноморфа. Избегай врагов. Не умри."
     raffle:
       settings: default
   - type: SlowOnDamage
     speedModifierThresholds:
-      5: 0.8
+      20: 0.8
   - type: NameIdentifier
     group: Xeno
   - type: MovementSpeedModifier
@@ -183,7 +178,7 @@
   - type: MeleeWeapon
     damage:
       groups:
-        Brute: 10
+        Brute: 9
   - type: Puller
     needsHands: true
   - type: Polymorphable
@@ -211,8 +206,8 @@
   - type: GhostTakeoverAvailable
   - type: GhostRole
     name: Королева улья
-    description: Командуй ульем ксеноморфов.
-    rules: "Командуй ульем, защищай свою кладку яиц. Способности: Размах хвостом (стан на лкм или вокруг на пкм) Липкие корни, Строительство стен ксено (на G), Лечебные феромоны, Широкий удар (ПКМ)"
+    description: Королева улья, способная воспроизводить потомство. В отличии от остальных ксеноморфов, королева обладает разумом не ниже человеческого.
+    rules: "Командуй ульем, защищай свою кладку яиц. Способности: Размах хвостом, липкие корни, Строительство стен ксено, лечебные феромоны, широкий удар "
     raffle:
       settings: default
   - type: Body
@@ -287,7 +282,7 @@
 - type: entity
   id: XenoLayEgg
   name: Отложить яйцо ксеноморфа
-  description: Пригодится в любом гнезде.
+  description: Будущее улья. Создаёт яйцо ксеноморфа.
   noSpawn: true
   components:
   - type: InstantAction
